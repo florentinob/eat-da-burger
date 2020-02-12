@@ -1,0 +1,49 @@
+<div class="container">
+<img src="https://images.app.goo.gl/RHp5rveJfoTYKP63A" class="img-fluid" alt="Responsive image">
+
+<h1><strong>Eat Da Burgers!</strong></h1>
+
+<h2><strong>Burgers Yet To Devour</strong></h2>
+
+<div class="card" style="width: 18rem;">
+  <ul>
+    {{#each burgers}}
+      {{#unless devoured}}
+         {{> burger-block devour=false}}
+      {{/unless}}
+    {{/each}}
+  </ul>
+</div>
+
+<h2><strong>Burgers Already Devoured</strong></h2>
+
+<div class="card" style="width: 18rem;">
+  <ul>
+    {{#each burgers}}
+      {{#if devoured}}
+         {{> burger-block devour=true}}
+      {{/if}}
+    {{/each}}
+  </ul>
+</div>
+</div>
+
+<h2><strong>Add A Burger To The Menu!</strong></h2>
+
+<form class="burger-form">
+  <div class="form-group">
+    <label for="burgers">Enter the burger you would like to eat!</label>
+    <input type="text" id="burgers" name="name">
+  </div>
+  <button type="submit">Submit</button>
+</form>
+
+<li>
+    {{name}}
+
+    {{#if devour}}
+
+    {{else}}
+    <button class="eat" data-id="{{this.id}}" data-newdevoured="{{devour}}">Devour!</button>
+    {{/if}}
+</li>
